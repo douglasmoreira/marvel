@@ -3,13 +3,13 @@ package br.com.zup.marvel.entity;
 public class Cliente {
 
 	private String nome;
-	private int idade;
+	private String idade;
 	private String cpf;
 	private String email;
-	private int telefone;
+	private String telefone;
 	private String endereço;
 	
-	public Cliente(String nome, int idade, String cpf, String email, int telefone, String endereço) {
+	public Cliente(String nome, String idade, String cpf, String email, String telefone, String endereço) {
 		super();
 		this.nome = nome;
 		this.idade = idade;
@@ -25,10 +25,10 @@ public class Cliente {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public int getIdade() {
+	public String getIdade() {
 		return idade;
 	}
-	public void setIdade(int idade) {
+	public void setIdade(String idade) {
 		this.idade = idade;
 	}
 	public String getCpf() {
@@ -43,10 +43,10 @@ public class Cliente {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public int getTelefone() {
+	public String getTelefone() {
 		return telefone;
 	}
-	public void setTelefone(int telefone) {
+	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
 	public String getEndereço() {
