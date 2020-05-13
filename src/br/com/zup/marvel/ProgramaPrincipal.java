@@ -66,7 +66,7 @@ public class ProgramaPrincipal {
 		System.out.println("Digite o e-mail: ");
 		String email = input.next();
 		System.out.println("Digite o número de telefone: ");
-		int telefone = input.nextInt();
+		String telefone = input.next();
 		System.out.println("Digite o endereço: ");
 		String endereco = input.next();
 
@@ -89,7 +89,7 @@ public class ProgramaPrincipal {
 		System.out.println("Digite o e-mail: ");
 		cliente.setEmail(input.next());
 		System.out.println("Digite o número de telefone: ");
-		cliente.setTelefone(input.nextInt());
+		cliente.setTelefone(input.next());
 		System.out.println("Digite o endereço: ");
 		cliente.setEndereço(input.next());
 
@@ -128,7 +128,7 @@ public class ProgramaPrincipal {
 		System.out.printf("O CPF: %s \n", cliente.getCpf());
 		System.out.printf("O e-mail: %s \n", cliente.getEmail());
 		System.out.printf("O número de telefone: %d \n", cliente.getTelefone());
-		System.out.printf("O endereço: %s \n\n", cliente.getEndereço());
+		System.out.printf("O endereço: %s \n\n", cliente.getEndereco());
 	}
 
 }
