@@ -11,16 +11,14 @@ import br.com.zup.marvel.mock.Mock;
 
 public class ClienteService {
 	
-	private static Map<String, Cliente> listaDeClientes;
 	DAO dao = new DAO();
 
 	public Cliente insereCliente(Cliente cliente) {
-		listaDeClientes = new HashMap<>();
-		listaDeClientes.put(cliente.getCpf(), cliente);
+		Mock.criaListaDeDadosMock().put(cliente.getCpf(), cliente);
 		
 
 		dao.inserirCliente(cliente);
-		return listaDeClientes.get(cliente.getCpf());
+		return Mock.criaListaDeDadosMock().get(cliente.getCpf());
 	}
 
 	public  Cliente atualizaCliente(Cliente cliente) {
@@ -35,7 +33,6 @@ public class ClienteService {
 
 		if (cpf != null) {
 			ArrayList<Cliente> clienteList = new ArrayList<Cliente>();
-			listaDeClientes = Mock.criaListaDeDadosMock();
 			clienteList.add(dao.recuperaClientes(cpf));
 			return clienteList;
 		} else {
@@ -48,7 +45,6 @@ public class ClienteService {
 	public void deleta(String cpf) {
 
 		dao.deletaCliente(cpf);
-		Mock.criaListaDeDadosMock().remove(cpf);
 	}
 
 }
