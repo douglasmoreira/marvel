@@ -12,7 +12,24 @@ import br.com.zup.marvel.factory.Factory;
 
 public class DAO {
 	
+	private static final int POSICAO_NOME_CREATE = 1;
+	private static final int POSICAO_IDADE_CREATE = 2;
+	private static final int POSICAO_CPF_CREATE = 3;
+	private static final int POSICAO_EMAIL_CREATE = 4;
+	private static final int POSICAO_TELEFONE_CREATE = 5;
+	private static final int POSICAO_ENDERECO_CREATE = 6;
+	
+	private static final int POSICAO_NOME_UPDATE = 1;
+	private static final int POSICAO_IDADE_UPDATE = 2;
+	private static final int POSICAO_EMAIL_UPDATE = 3;
+	private static final int POSICAO_TELEFONE_UPDATE = 4;
+	private static final int POSICAO_ENDERECO_UPDATE = 5;
+	private static final int POSICAO_CPF_UPDATE = 6;
+
+	private static final int POSICAO_CPF_DELETE = 1;
+	
 	Connection conexao;
+	
 	public DAO() {
 		this.conexao = new Factory().getConnection();
 	}
@@ -24,12 +41,12 @@ public class DAO {
 		
 		try {
 			PreparedStatement stmt = conexao.prepareStatement(sql);
-			stmt.setString(1, cliente.getNome());
-			stmt.setInt(2, cliente.getIdade());
-			stmt.setString(3, cliente.getCpf());
-			stmt.setString(4, cliente.getEmail());
-			stmt.setString(5, cliente.getTelefone());
-			stmt.setString(6, cliente.getEndereco());
+			stmt.setString(POSICAO_NOME_CREATE, cliente.getNome());
+			stmt.setInt(POSICAO_IDADE_CREATE, cliente.getIdade());
+			stmt.setString(POSICAO_CPF_CREATE, cliente.getCpf());
+			stmt.setString(POSICAO_EMAIL_CREATE, cliente.getEmail());
+			stmt.setString(POSICAO_TELEFONE_CREATE, cliente.getTelefone());
+			stmt.setString(POSICAO_ENDERECO_CREATE, cliente.getEndereco());
 			
 			stmt.execute();
 			stmt.close();
@@ -51,13 +68,13 @@ public class DAO {
 		try {
 			PreparedStatement stmt = conexao.prepareStatement(sql);
 			
-			stmt.setString(1, cliente.getNome());
-			stmt.setInt(2, cliente.getIdade());
-			stmt.setString(3, cliente.getEmail());
-			stmt.setString(4, cliente.getTelefone());
-			stmt.setString(5, cliente.getEndereco());
+			stmt.setString(POSICAO_NOME_UPDATE, cliente.getNome());
+			stmt.setInt(POSICAO_IDADE_UPDATE, cliente.getIdade());
+			stmt.setString(POSICAO_EMAIL_UPDATE, cliente.getEmail());
+			stmt.setString(POSICAO_TELEFONE_UPDATE, cliente.getTelefone());
+			stmt.setString(POSICAO_ENDERECO_UPDATE, cliente.getEndereco());
 			
-			stmt.setString(6, cliente.getCpf());
+			stmt.setString(POSICAO_CPF_UPDATE, cliente.getCpf());
 			
 			stmt.execute();
 			stmt.close();
@@ -127,7 +144,7 @@ public Cliente recuperaClientes(String cpfRequest) {
 		
 		try {
 			PreparedStatement stmt = conexao.prepareStatement(sql);
-			stmt.setString(1, cpf);
+			stmt.setString(POSICAO_CPF_DELETE, cpf);
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {

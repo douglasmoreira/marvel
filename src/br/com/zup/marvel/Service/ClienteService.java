@@ -1,9 +1,7 @@
 package br.com.zup.marvel.Service;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import br.com.zup.marvel.dao.DAO;
 import br.com.zup.marvel.entity.Cliente;
