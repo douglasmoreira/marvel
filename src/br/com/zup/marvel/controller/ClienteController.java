@@ -2,7 +2,6 @@ package br.com.zup.marvel.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import javax.servlet.ServletException;
@@ -54,7 +53,10 @@ public class ClienteController extends HttpServlet{
 	@Override
 	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		Cliente clienteResponse = clienteService.atualizaCliente(transformaJsomEmStringCliente(req));
+		String cpf = recuperaPathParameterToString(req);
+		Cliente cliente = transformaJsomEmStringCliente(req);
+		cliente.setCpf(cpf);
+		Cliente clienteResponse = clienteService.atualizaCliente(cliente, cpf);
 		
 		String clienteJsonString = gson.toJson(clienteResponse);
 		PrintWriter out = resp.getWriter();
