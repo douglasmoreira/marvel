@@ -12,25 +12,25 @@ public class Mock {
 	
 	public static Map<String, Cliente> criaListaDeDadosMock() {
 		Map<String, Cliente> listaDeClientes = new HashMap<String, Cliente>();
-		String nome = "joão";
-		int idade = 24;
-		String cpf = "1234567890";
-		String email = "joaõ@zup.com.br";
-		String telefone = "987654321";
-		String endereco = "zico felix";
+		Cliente cliente = new Cliente();
+		Cliente cliente2 = new Cliente();
+		cliente.setNome("joão");
+		cliente.setIdade(24);
+		cliente.setCpf("1234567890");
+		cliente.setEmail("joaõ@zup.com.br");
+		cliente.setTelefone("987654321");
+		cliente.setEndereco("zico felix");
 		
-		String nome2 = "bráulio";
-		int idade2 = 26;
-		String cpf2 = "0123456789";
-		String email2 = "bráulio@zup.com.br";
-		String telefone2 = "987654321";
-		String endereco2 = "zico frederico rocha";
 		
-		Cliente cliente = new Cliente(nome, idade, cpf, email, telefone, endereco);
-		Cliente cliente2 = new Cliente(nome2, idade2, cpf2, email2, telefone2, endereco2);
+		cliente2.setNome("bráulio");
+		cliente2.setIdade(26);
+		cliente2.setCpf("0123456789");
+		cliente2.setEmail("bráulio@zup.com.br");
+		cliente2.setTelefone("987654321");
+		cliente2.setEndereco("zico frederico rocha");		
 		
-		listaDeClientes.put(cpf, cliente);
-		listaDeClientes.put(cpf2, cliente2);
+		listaDeClientes.put(cliente.getCpf(), cliente);
+		listaDeClientes.put(cliente2.getCpf(), cliente2);
 		
 		return listaDeClientes;
 	}

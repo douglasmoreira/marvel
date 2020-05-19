@@ -56,9 +56,9 @@ public class ClienteDAO {
         return cliente;
     }
 
-    public Cliente save(Cliente cliente) {
-        return cliente.getCpf() != null ? update(cliente) : insert(cliente);
-    }
+//    public Cliente save(Cliente cliente) {
+//        return cliente.getCpf() != null ? update(cliente, cpf) : insert(cliente);
+//    }
 
     public Cliente insert(Cliente cliente) {
         Connection c = null;
@@ -93,25 +93,25 @@ public class ClienteDAO {
         return cliente;
     }
 
-    public Cliente update(Cliente cliente) {
+    public Cliente update(Cliente cliente, String cpf) {
         Connection c = null;
+        PreparedStatement ps = null;
         try {
             c = DBConnection.getConnection();
-            PreparedStatement ps = c
-                    .prepareStatement("UPDATE cliente "
+             ps = c.prepareStatement("UPDATE cliente "
                     		+ "SET nome=?, "
                     		+ "idade=?, "
                     		+ "email=?, "
                     		+ "telefone=?, "
                     		+ "endereco=?  "
-                    		+ "WHERE cpf=?");
+                    		+ "WHERE cpf=? ");
             
             ps.setString(1, cliente.getNome());
             ps.setInt(2, cliente.getIdade());
             ps.setString(3, cliente.getEmail());
             ps.setString(4, cliente.getTelefone());
             ps.setString(5, cliente.getEndereco());
-            ps.setString(6, cliente.getCpf());
+            ps.setString(6, cpf);
             
             ps.executeUpdate();
             
@@ -145,13 +145,15 @@ public class ClienteDAO {
     }
 
     protected Cliente processRow(ResultSet rs) throws SQLException {
-        Cliente cliente = new Cliente(
-        		rs.getString("nome"), 
-        		rs.getInt("idade"), 
-        		rs.getString("cpf"), 
-        		rs.getString("email"), 
-        		rs.getString("telefone"), 
-        		rs.getString("endereco"));
+    	
+    	Cliente cliente = new Cliente();
+    	
+    	cliente.setNome(rs.getString("nome")); 
+		cliente.setIdade(rs.getInt("idade")); 
+		cliente.setCpf(rs.getString("cpf")); 
+		cliente.setEmail(rs.getString("email")); 
+		cliente.setTelefone(rs.getString("telefone")); 
+		cliente.setEndereco(rs.getString("endereco"));
 
         return cliente;
 

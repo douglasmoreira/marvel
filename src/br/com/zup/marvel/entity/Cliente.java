@@ -1,5 +1,8 @@
 package br.com.zup.marvel.entity;
 
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+
+@EntityScan 
 public class Cliente {
 
 	private String nome;
@@ -9,15 +12,15 @@ public class Cliente {
 	private String telefone;
 	private String endereco;
 	
-	public Cliente(String nome, int idade, String cpf, String email, String telefone, String endereco) {
-		super();
-		this.nome = nome;
-		this.idade = idade;
-		this.cpf = cpf;
-		this.email = email;
-		this.telefone = telefone;
-		this.endereco = endereco;
-	}
+//	public Cliente(String nome, int idade, String cpf, String email, String telefone, String endereco) {
+//		super();
+//		this.nome = nome;
+//		this.idade = idade;
+//		this.cpf = cpf;
+//		this.email = email;
+//		this.telefone = telefone;
+//		this.endereco = endereco;
+//	}
 	
 	public String getNome() {
 		return nome;
@@ -52,7 +55,7 @@ public class Cliente {
 	public String getEndereco() {
 		return endereco;
 	}
-	public void setEndereço(String endereco) {
+	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
 	
