@@ -3,41 +3,45 @@ package br.com.zup.marvel.Service;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.zup.marvel.dao.ClienteDAO;
-import br.com.zup.marvel.entity.Cliente;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import br.com.zup.marvel.entity.Cliente;
+import br.com.zup.marvel.repository.ClienteRepository;
+
+@Service
 public class ClienteService {
 	
-	ClienteDAO clienteDAO = new ClienteDAO();
+	@Autowired
+	ClienteRepository repository;
 
 	public Cliente insereCliente(Cliente cliente) {
 		
-		clienteDAO.insert(cliente);
-		return cliente;
+		return repository.save(cliente);
 	}
 
 	public  Cliente atualizaCliente(Cliente cliente, String cpf) {
 		
-		clienteDAO.update(cliente, cpf);
 		cliente.setCpf(cpf);
-		return cliente;
+		return repository.save(cliente);
 	}
 
 	public List<Cliente> retornaClientes(String cpf) {
 
 		if (cpf != null) {
 			ArrayList<Cliente> clienteList = new ArrayList<Cliente>();
-			clienteList.add(clienteDAO.findByCpf(cpf));
+			clienteList.add(repository.findById(cpf).get());
+
 			return clienteList;
 		} else {
 			
-			return clienteDAO.findAll();
+			return repository.findAll();
 		}
 	}
 
 	public void deleta(String cpf) {
 
-		clienteDAO.remove(cpf);
+		repository.deleteById(cpf);
 	}
 
 }

@@ -1,26 +1,30 @@
 package br.com.zup.marvel.entity;
 
-import org.springframework.boot.autoconfigure.domain.EntityScan;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
-@EntityScan 
+@Entity
 public class Cliente {
 
+	@Column(nullable = false)
 	private String nome;
-	private int idade;
-	private String cpf;
-	private String email;
-	private String telefone;
-	private String endereco;
 	
-//	public Cliente(String nome, int idade, String cpf, String email, String telefone, String endereco) {
-//		super();
-//		this.nome = nome;
-//		this.idade = idade;
-//		this.cpf = cpf;
-//		this.email = email;
-//		this.telefone = telefone;
-//		this.endereco = endereco;
-//	}
+	@Column(nullable = false)
+	private int idade;
+	
+	@Id
+	@Column(nullable = false)
+	private String cpf;
+	
+	@Column(nullable = false)
+	private String email;
+	
+	@Column(nullable = false)
+	private String telefone;
+	
+	@Column(nullable = false)
+	private String endereco;
 	
 	public String getNome() {
 		return nome;
