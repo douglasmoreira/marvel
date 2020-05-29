@@ -1,23 +1,30 @@
 package br.com.zup.marvel.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Cliente {
 
+	@Column(nullable = false)
 	private String nome;
-	private int idade;
-	private String cpf;
-	private String email;
-	private int telefone;
-	private String endereço;
 	
-	public Cliente(String nome, int idade, String cpf, String email, int telefone, String endereço) {
-		super();
-		this.nome = nome;
-		this.idade = idade;
-		this.cpf = cpf;
-		this.email = email;
-		this.telefone = telefone;
-		this.endereço = endereço;
-	}
+	@Column(nullable = false)
+	private int idade;
+	
+	@Id
+	@Column(nullable = false)
+	private String cpf;
+	
+	@Column(nullable = false)
+	private String email;
+	
+	@Column(nullable = false)
+	private String telefone;
+	
+	@Column(nullable = false)
+	private String endereco;
 	
 	public String getNome() {
 		return nome;
@@ -43,17 +50,17 @@ public class Cliente {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public int getTelefone() {
+	public String getTelefone() {
 		return telefone;
 	}
-	public void setTelefone(int telefone) {
+	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
-	public String getEndereço() {
-		return endereço;
+	public String getEndereco() {
+		return endereco;
 	}
-	public void setEndereço(String endereço) {
-		this.endereço = endereço;
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
 	}
 	
 }
