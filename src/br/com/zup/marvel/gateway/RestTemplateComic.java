@@ -29,7 +29,7 @@ public class RestTemplateComic {
 	
 	public String gerarHash() {
 		
-		String key = generateTimestamp() + "chave";
+		String key = generateTimestamp() + "c43c18515636b8fd91bcb8749263137f6894ecb15576cb1772688f0b79b587abcb380449";
 		String md5Hex = DigestUtils.md5Hex(key);
 		
 		return md5Hex;		
